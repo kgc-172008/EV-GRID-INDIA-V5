@@ -1,0 +1,14 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.8
+pandas>=2.2
+numpy>=1.26
+scikit-learn>=1.5
+scipy>=1.13
+networkx>=3.3
+geopandas>=1.0
+shapely>=2.0
+sqlalchemy>=2.0
+psycopg[binary]>=3.2
+geoalchemy2>=0.15
+python-multipart>=0.0.9

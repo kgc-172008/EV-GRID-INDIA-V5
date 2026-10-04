@@ -1,0 +1,2 @@
+state,district,year,ev_count,population,road_score,activity_score,latitude,longitude,source,retrieved_on
+EXAMPLE,EXAMPLE,2025,0,1,50,50,0,0,REPLACE,YYYY-MM-DD

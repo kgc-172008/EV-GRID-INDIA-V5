@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: ev-grid-postgis-v5
+    environment:
+      POSTGRES_DB: evgrid
+      POSTGRES_USER: evgrid
+      POSTGRES_PASSWORD: evgrid
+    ports:
+      - "5432:5432"
+    volumes:
+      - evgrid_db_v5:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/01_init.sql
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: ev-grid-api-v5
+    environment:
+      DATABASE_URL: postgresql+psycopg://evgrid:evgrid@db:5432/evgrid
+      DEMO_MODE: "true"
+      CORS_ORIGINS: http://localhost:5173
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    container_name: ev-grid-web-v5
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  evgrid_db_v5:

@@ -1,0 +1,2 @@
+charger_id,state,district,latitude,longitude,operator,source,retrieved_on
+EXAMPLE-001,EXAMPLE,EXAMPLE,0,0,REPLACE,REPLACE,YYYY-MM-DD
